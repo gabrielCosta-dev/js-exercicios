@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nota</title>
+</head>
+<body>
+    <h1></h1>
+
+    <script>
+        let nota1 = Number(prompt('Digite a primeira nota:'))
+        let nota2 = Number(prompt('Digite a segunda nota:'))
+        let resposta = document.getElementsByTagName('h1')[0]
+        //console.log(typeof nota1)
+
+        if (nota1 <= 10 && nota2 <= 10 && nota1 >= 0 && nota2 >= 0) {
+            let media = (nota1 + nota2)/2
+
+            if (media == 10) {
+                resposta.innerText = 'Aprovado com distinção!'
+            } else if(media >= 7){
+                resposta.innerText = 'Aprovado'
+                console.log('Aprovado')
+            } else{
+                resposta.innerText = 'Reprovado'
+            }
+        } else {
+            alert('Preencha as notas corretamente, por favor.')
+        }
+    </script>
+</body>
+</html>
