@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Letra</title>
+</head>
+<body>
+    <h1>Vogal ou consoante?</h1>
+    <label for="letra">Digite uma letra:</label>
+    <input type="text" name="letra" id="letra">
+    <button type="button" onclick="verificar()">Verificar</button>
+    <p id="resposta"></p>
+
+    <script>
+        function verificar() {
+            let letra = document.querySelector('input#letra').value
+            let resposta = document.getElementById('resposta')
+
+            if (letra !== '') {
+                let vogalCon = letra.toLowerCase()
+                console.log(vogalCon)
+                if (vogalCon !== 'a' && vogalCon === 'e' && vogalCon === 'i' && vogalCon === 'o' && vogalCon === 'u') {
+                    resposta.innerText = 'Vogal!'
+                } else {
+                    resposta.innerText = 'Consoante!'
+                }
+            } else {
+                alert('Digite uma letra, por favor.')
+            }
+        }
+    </script>
+</body>
+</html>
