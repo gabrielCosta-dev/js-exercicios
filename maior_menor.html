@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maior ou Menor</title>
+</head>
+<body>
+    <h1>Maior ou menor</h1>
+    <label for="numero">Digite um número:</label>
+    <input type="number" name="numero" id="numero">
+    <button type="button" onclick="verificar()">Verificar</button>
+    <p></p>
+
+    <script>
+        let vetor = []
+
+        function verificar() {
+            let numero = document.querySelector('input#numero').value
+            let limiteItens = 3
+            let resposta = document.getElementsByTagName('p')[0]
+
+            if (numero !== '') {
+                if (vetor.length < limiteItens) {
+                    let Numero = Number(numero)
+
+                    vetor.push(Numero)
+                } else {
+                   alert('Limite de 3 itens.') 
+                }
+
+                vetor.sort(function(a,b){
+                    return a-b
+                })
+
+                let menor = vetor[0]
+                let maior = vetor[vetor.length - 1]
+
+                
+                resposta.innerText = `O menor número é ${menor}. O maior número é ${maior}.`
+                console.log(vetor)
+                
+            } else {
+                alert('Preencha o campo, por favor.')
+            }
+        }
+    </script>
+</body>
+</html>
