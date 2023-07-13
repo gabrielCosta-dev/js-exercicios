@@ -24,18 +24,39 @@
                 let per10 = 10
                 let per5 = 5
 
-                if (salario <= 280) {
+                if (Salario > 0) {
+                    if (salario <= 280) {
                     resposta.innerText = `
                     Seu salário atual é: ${Salario}.\n
                     Foram adicionados: ${per20}%.\n
                     O valor total de aumento é: ${(per20/100)*Salario}.\n
                     O seu novo salário é: ${((per20/100)*Salario) + Salario}.
                     `
-                } else {
-                    
+                } else if(salario > 280 && salario <= 700) {
+                    resposta.innerText = `
+                    Seu salário atual é: ${Salario}.\n
+                    Foram adicionados: ${per15}%.\n
+                    O valor total de aumento é: ${(per15/100)*Salario}.\n
+                    O seu novo salário é: ${((per15/100)*Salario) + Salario}.
+                    `
+                }else if(salario > 700 && salario <= 1500){
+                    resposta.innerText = `
+                    Seu salário atual é: ${Salario}.\n
+                    Foram adicionados: ${per10}%.\n
+                    O valor total de aumento é: ${(per10/100)*Salario}.\n
+                    O seu novo salário é: ${((per10/100)*Salario) + Salario}.
+                    `
+                }else{
+                    resposta.innerText = `
+                    Seu salário atual é: ${Salario}.\n
+                    Foram adicionados: ${per5}%.\n
+                    O valor total de aumento é: ${(per5/100)*Salario}.\n
+                    O seu novo salário é: ${((per5/100)*Salario) + Salario}.
+                    `
                 }
-
-                console.log(Salario)
+                } else {
+                    alert('Digite um valor válido!')
+                }
             } else {
                 alert('Preencha um campo!')
             }
