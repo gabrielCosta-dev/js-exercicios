@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trocando Números</title>
+</head>
+<body>
+    <h1>Maior ou menor</h1>
+    <label for="numero">Digite um número:</label>
+    <input type="number" name="numero1" id="numero1">
+
+    <label for="numero2">Digite outro número:</label>
+    <input type="number" name="numero2" id="numero2">
+    <button type="button" onclick="trocar()">Trocar</button>
+
+    <script>
+        function trocar() {
+            let numero1 = document.getElementById('numero1').value
+            let numero2 = document.getElementById('numero2').value
+            //console.log(numero1)
+            alert('Valores antes da troca de números:\n Número 1: '+numero1+' Número 2: '+numero2+'.')
+
+            let valor1 = Number(numero1)
+            let valor2 = Number(numero2)
+
+            if (numero1 !== '' && numero2 !== '' && valor1 !== valor2) {
+                
+                let temp = ''
+
+                temp = valor1
+                valor1 = valor2
+                valor2 = temp
+
+                alert('Valores depois da troca de números:\n Número 1: '+valor1+' Número 2: '+valor2+'.')
+            } else {
+                alert('Preencha os campos! E certifique-se de serem valores diferentes.')
+            }
+        }
+    </script>
+</body>
+</html>
