@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcular reajuste</title>
+</head>
+<body>
+    <h1>Calcular reajuste de salário</h1>
+    <label for="numero">Digite seu salário:</label>
+    <input type="number" name="numero" id="numero">
+    <button type="button" onclick="calcular()">Calcular</button>
+    <div></div>
+
+    <script>
+        function calcular() {
+            let salario = document.getElementById('numero').value
+            let resposta = document.getElementsByTagName('div')[0]
+            
+            if (salario!=='') {
+                let Salario = Number(salario)
+                let per20 = 20
+                let per15 = 15
+                let per10 = 10
+                let per5 = 5
+
+                if (salario <= 280) {
+                    resposta.innerText = `
+                    Seu salário atual é: ${Salario}.\n
+                    Foram adicionados: ${per20}%.\n
+                    O valor total de aumento é: ${(per20/100)*Salario}.\n
+                    O seu novo salário é: ${((per20/100)*Salario) + Salario}.
+                    `
+                } else {
+                    
+                }
+
+                console.log(Salario)
+            } else {
+                alert('Preencha um campo!')
+            }
+        }
+    </script>
+</body>
+</html>
