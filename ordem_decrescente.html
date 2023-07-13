@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ordem Decrescente</title>
+</head>
+<body>
+    <label for="numero">Digite um número:</label>
+    <input type="number" name="numero1" id="numero1">
+
+    <label for="numero2">Digite outro número:</label>
+    <input type="number" name="numero2" id="numero2">
+
+    <label for="numero3">Digite outro número:</label>
+    <input type="number" name="numero2" id="numero3">
+    <button type="button" onclick="ordenar()">Ordenar</button>
+
+    <script>
+        function ordenar(){
+            let numero1 = document.getElementById('numero1').value
+            let numero2 = document.getElementById('numero2').value
+            let numero3 = document.getElementById('numero3').value
+
+            let valor1 = Number(numero1)
+            let valor2 = Number(numero2)
+            let valor3 = Number(numero3)
+            
+            if (numero1!=='' && numero2!=='' && numero3!=='') {
+              let aux = valor1  
+
+              if (valor1 < valor2) {
+                aux = valor2;
+                valor2 = valor1;
+                valor1 = aux;
+              }
+
+              if (valor1 < valor3) {
+                aux = valor3
+                valor3 = valor1
+                valor1 = aux
+              }
+
+              if (valor2 < valor3) {
+                aux = valor3
+                valor3 = valor2
+                valor2 = aux
+              }
+
+              alert(valor1 +' - '+valor2+' - '+valor3)
+            } else {
+                alert('Preencha os campos, por favor.')
+            }
+            
+        }
+    </script>
+</body>
+</html>
