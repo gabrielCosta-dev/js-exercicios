@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dia da semana</title>
+</head>
+<body>
+    <h1>Qual o dia da semana?</h1>
+    <label for="diaSem">Digite um número (1-7):</label>
+    <input type="number" name="diaSem" id="diaSem">
+    <button type="button" onclick="semana()">Verificar</button>
+
+    <script>
+        function semana() {
+            let diaSem = document.getElementById('diaSem').value
+            //console.log(diaSem)
+
+            if (diaSem !== '') {
+                let dia = Number(diaSem)
+
+                if (dia == 1 || dia == 2 || dia == 3 || dia == 4 || dia == 5 || dia == 6 || dia == 7) {
+                    if (dia == 1) {
+                        alert('Domingo!')
+                    }
+
+                    if (dia == 2) {
+                        alert('Segunda-feira!')
+                    }
+
+                    if (dia == 3) {
+                        alert('Terça-feira!')
+                    }
+
+                    if (dia == 4) {
+                        alert('Quarta-feira!')
+                    }
+
+                    if (dia == 5) {
+                        alert('Quinta-feira!')
+                    }
+
+                    if (dia == 6) {
+                        alert('Sexta-feira!')
+                    }
+
+                    if (dia == 7) {
+                        alert('Sábado!')
+                    }
+                } else {
+                    alert('Valor inválido.')
+                }
+            } else {
+                alert('Preencha o campo, por favor!')
+            }
+        }
+    </script>
+</body>
+</html>
