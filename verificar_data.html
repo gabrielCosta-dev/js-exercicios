@@ -27,17 +27,19 @@
                 let mes = Number(m)
                 let ano = Number(a)
 
-                if (dia < 0 || dia > 31) {
+                if (dia <= 0 || dia > 31) {
                     alert('Valor incorreto: (Dia)')
-                } else if(mes < 0 || mes > 12){
+                } else if(mes <= 0 || mes > 12){
                     alert('Valor incorreto: (Mês)')
                 } else if(ano <= 0 || ano > 9999){
                     alert('Valor incorreto: (Ano)')
-                }
-
-                alert(`
+                }else{
+                    alert(`
                     ${dia}/${mes}/${ano}
                 `)
+                }
+
+                
             } else {
                 alert('Preencha os campos.')
             }
