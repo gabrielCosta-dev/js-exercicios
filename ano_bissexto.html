@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ano Bissexto</title>
+</head>
+<body>
+    <label for="ano">Ano:</label>
+    <input type="number" name="" id="ano">
+    <button type="button" onclick="bissexto()">Verificar</button>
+
+    <script>
+        function bissexto() {
+            let a = document.querySelector('input#ano').value
+            
+            if (a !== '') {
+                let ano = Number(a)
+
+                if (ano % 400 == 0) {
+                    alert('Ano Bissexto!')
+                } else if(ano % 4 == 0 && ano % 100 !== 0){
+                    alert('Ano Bissexto!')
+                } else{
+                    alert('Não Bissexto!')
+                }
+            } else {
+                alert('Nenhum ano adicionado!')
+            }
+        }
+    </script>
+</body>
+</html>
