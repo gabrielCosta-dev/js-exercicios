@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificar data</title>
+</head>
+<body>
+    <label for="dia">Dia:</label>
+    <input type="number" name="" id="dia"><hr>
+
+    <label for="mes">Mês:</label>
+    <input type="number" name="" id="mes"><hr>
+
+    <label for="ano">Ano:</label>
+    <input type="number" name="" id="ano"><hr>
+    <button type="button" onclick="verificarData()">Verificar</button>
+
+    <script>
+        function verificarData() {
+            let d = document.querySelector('input#dia').value
+            let m = document.querySelector('input#mes').value
+            let a = document.querySelector('input#ano').value
+
+            if (d !== '' && m !== '' && a !== '') {
+                let dia = Number(d)
+                let mes = Number(m)
+                let ano = Number(a)
+
+                if (dia < 0 || dia > 31) {
+                    alert('Valor incorreto: (Dia)')
+                } else if(mes < 0 || mes > 12){
+                    alert('Valor incorreto: (Mês)')
+                } else if(ano <= 0 || ano > 9999){
+                    alert('Valor incorreto: (Ano)')
+                }
+
+                alert(`
+                    ${dia}/${mes}/${ano}
+                `)
+            } else {
+                alert('Preencha os campos.')
+            }
+        }
+    </script>
+</body>
+</html>
