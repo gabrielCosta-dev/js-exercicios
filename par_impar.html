@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Par ou Ímpar</title>
+</head>
+<body>
+    <label for="n1">Número:</label>
+    <input type="number" name="numero" id="n1">
+    <button type="button" onclick="calcular()">Verificar</button>
+
+    <script>
+        function calcular() {
+            let n1 = document.getElementById('n1').value
+            console.log(n1)
+
+            if (n1 !== '') {
+                let numero = Number(n1)
+
+                if (numero % 1 == 0) {
+                    if (numero % 2 == 0) {
+                        alert('Par!')
+                    } else {
+                        alert('Ímpar!')
+                    }
+                } else {
+                    alert('Deve ser inteiro!')
+                }
+            } else {
+                alert('Digite um número')
+            }
+        }
+    </script>
+</body>
+</html>
