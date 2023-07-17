@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Folha de pagamento</title>
+</head>
+<body>
+    <h1>Folha de pagamento</h1>
+
+    <label for="vhora">Valor da hora:</label>
+    <input type="number" name="vhora" id="vhora">
+    
+    <label for="horasMes">Horas trabalhadas no mês:</label>
+    <input type="number" name="horasMes" id="horasMes">
+    
+    <button type="button" onclick="calcular()">Calcular</button>
+    <div></div>
+
+    <script>
+        function calcular(){
+            let valorHora = document.getElementById('vhora').value
+            let horasMes = document.getElementById('horasMes').value
+            let resposta = document.getElementsByTagName('div')[0]
+            resposta.innerText = 'Feijão'
+
+            if (valorHora !== '' && horasMes !== '') {
+                //Valores Base
+                resposta.innerText = 'Arroz'
+                let valHora = Number(valorHora)
+                let horMes = Number(horasMes)
+
+                //Salario  INSS Sindicato
+                let salario = horMes * valHora
+                let descSind = (3/100)*salario
+                let descInss = (10/100)*salario
+                let fgts = (11/100)*salario
+                let salarioBruto = salario - descSind
+
+                if (valHora !== 0 && horMes !== 0) {
+                    if (salarioBruto <= 900) {
+                        //Isento de IR
+                        resposta.innerText = `
+                        Salário Bruto: (${valHora} * ${horMes} - ${descSind}) = R$ ${salarioBruto.toString().replace('.', ',')}.\n
+                        (-)INSS (10%): ${descInss.toString().replace('.', ',')}\n
+                        FGTS (11%): ${fgts.toString().replace('.', ',')}\n
+                        Total de descontos: ${(descInss).toString().replace('.', ',')}\n
+                        Salário líquido: ${(salarioBruto - descInss).toString().replace('.', ',')}
+                        `
+                    } else if(salarioBruto > 900 && salarioBruto <= 1500){
+                        //Desconto de 5%
+                        let ir = 0.05
+                        resposta.innerText = `
+                        Salário Bruto: (${valHora} * ${horMes} - ${descSind}) = R$ ${salarioBruto.toString().replace('.', ',')}.\n
+                        (-)IR (5%): ${(salarioBruto * ir).toString().replace('.', ',')}
+                        (-)INSS (10%): ${descInss.toString().replace('.', ',')}\n
+                        FGTS (11%): ${fgts.toString().replace('.', ',')}\n
+                        Total de descontos: ${((descInss)+(ir)).toString().replace('.', ',')}\n
+                        Salário líquido: ${salarioBruto - (descInss - ir).toString().replace('.', ',')}
+                        `
+                    }
+                    console.log(salarioBruto)
+                } else {
+                    alert('Deve ser maior que 0!')
+                }
+            } else {
+               alert('Preencha os campos por favor!'); 
+            }
+        }
+    </script>
+</body>
+</html>
