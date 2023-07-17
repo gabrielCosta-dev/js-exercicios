@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Triângulo</title>
+</head>
+<body>
+    <label for="ladoA">Digite um número:</label>
+    <input type="number" name="" id="ladoA">
+    <br>
+    <label for="ladoB">Digite um número:</label>
+    <input type="number" name="" id="ladoB">
+    <br>
+    <label for="ladoC">Digite um número:</label>
+    <input type="number" name="" id="ladoC">
+    <br>
+    <button type="button" onclick="calcularTriangulo()">Calcular</button>
+
+    <script>
+        function calcularTriangulo(){
+            let a = document.getElementById('ladoA').value
+            let b = document.getElementById('ladoB').value
+            let c = document.getElementById('ladoC').value
+            
+            if (a !== '' && b !== '' && c !== '') {
+                //Transformando em Number
+                let l1 = Number(a)
+                let l2 = Number(b)
+                let l3 = Number(c)
+                
+                //Somas dos lados
+                let ladoA = l1 + l2
+                let ladoB = l1 + l3
+                let ladoC = l2 + l3
+                console.log(ladoA)
+                console.log(ladoB)
+                console.log(ladoC)
+                /* ladoA > l1 || ladoA > l2 || ladoA > l3 ||
+                ladoB > l1 || ladoB > l2 || ladoB > l3 ||
+                ladoC > l1 || ladoC > l2 || ladoC > l3 */
+
+                if (ladoA > 0 && ladoB > 0 && ladoC > 0) {
+                    if (ladoA == ladoB && ladoB == ladoC && ladoA == ladoC) {
+                        alert('Triângulo Equilátero!')
+                    }
+
+                    if (ladoA == ladoB || ladoB == ladoC || ladoA == ladoC) {
+                        alert('Triângulo Isósceles!')
+                    }
+
+                    if (ladoA !== ladoB && ladoB !== ladoC && ladoA !== ladoC) {
+                        alert('Triângulo Escaleno!')
+                    }
+
+                } else {
+                    alert('Não é um triângulo!')
+                }
+            } else {
+                alert('Preencha todos os campos!')
+            }
+        }
+    </script>
+</body>
+</html>
