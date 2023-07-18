@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caixa eletrônico</title>
+</head>
+<body>
+    <label for="num">Digite um valor (10-600):</label>
+    <input type="number" name="num" id="num">
+    <button type="button" onclick="verificar()">Verificar</button>
+
+    <script>
+        function verificar() {
+            let num = document.querySelector('input#num').value
+            console.log(num)
+            
+            if (num !== '') {
+                let numero = Number(num)
+
+                let centenas = numero / 100
+                let dezenas = numero % 100 / 10
+                let unidades = numero % 10
+                
+                if (numero >= 10 && numero <= 600) {
+                    
+
+                    
+                } else {
+                    alert('Valor inválido.')
+                }
+
+            } else {
+                alert('Digite um número.')
+            }
+        }
+    </script>
+</body>
+</html>
