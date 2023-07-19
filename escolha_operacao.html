@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fazendo Contas</title>
+</head>
+<body>
+    <input type="number" name="" id="num1">
+    
+    <select name="" id="">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+    </select>
+
+    <input type="number" name="" id="num2">
+    <button type="button" onclick="calcular()">Calcular</button>
+    <div id="res"></div>
+
+    <script>
+        function calcular() {
+            let num1 = document.querySelector('input#num1').value
+            let num2 = document.querySelector('input#num2').value
+            let select = document.getElementsByTagName('select')[0].value
+            let res = document.getElementById('res')
+
+            if (num1 !== '' && num2 !== '') {
+                res.innerText = ''
+                let numero1 = Number(num1)
+                let numero2 = Number(num2)
+               //console.log(typeof num1, typeof select, typeof num2)
+
+                if (select == '+') {
+                  let soma = numero1 + numero2
+                  res.innerText = soma
+                  if (soma >= 0) {
+                    res.innerText += '\nPositivo\n'
+                  } else {
+                    res.innerText += '\nNegativo\n'
+                  }
+
+                  if (soma % 1 == 0) {
+                    res.innerText += 'Inteiro \n'
+                  } else {
+                    res.innerText += 'Decimal \n'
+                  }
+
+                  if (soma % 2 == 0) {
+                    res.innerText += 'Par \n'
+                  } else {
+                    res.innerText += 'Ímpar \n'
+                  }
+                }
+
+                if (select == '-') {
+                  let subtracao = numero1 - numero2
+                  res.innerText = subtracao
+                  if (subtracao >= 0) {
+                    res.innerText += '\nPositivo\n'
+                  } else {
+                    res.innerText += '\nNegativo\n'
+                  }
+
+                  if (subtracao % 1 == 0) {
+                    res.innerText += 'Inteiro \n'
+                  } else {
+                    res.innerText += 'Decimal \n'
+                  }
+
+                  if (subtracao % 2 == 0) {
+                    res.innerText += 'Par \n'
+                  } else {
+                    res.innerText += 'Ímpar \n'
+                  }
+                }
+
+                if (select == '*') {
+                  let multiplicacao = numero1 * numero2
+                  res.innerText = multiplicacao
+                  if (multiplicacao >= 0) {
+                    res.innerText += '\nPositivo\n'
+                  } else {
+                    res.innerText += '\nNegativo\n'
+                  }
+
+                  if (multiplicacao % 1 == 0) {
+                    res.innerText += 'Inteiro \n'
+                  } else {
+                    res.innerText += 'Decimal \n'
+                  }
+
+                  if (multiplicacao % 2 == 0) {
+                    res.innerText += 'Par \n'
+                  } else {
+                    res.innerText += 'Ímpar \n'
+                  }
+                }
+
+                if (select == '/') {
+                  let divisao = numero1 / numero2
+                  res.innerText = divisao
+                  if (divisao >= 0) {
+                    res.innerText += '\nPositivo\n'
+                  } else {
+                    res.innerText += '\nNegativo\n'
+                  }
+
+                  if (divisao % 1 == 0) {
+                    res.innerText += 'Inteiro \n'
+                  } else {
+                    res.innerText += 'Decimal \n'
+                  }
+
+                  if (divisao % 2 == 0) {
+                    res.innerText += 'Par \n'
+                  } else {
+                    res.innerText += 'Ímpar \n'
+                  }
+                }
+            } else {
+               alert('Preencha os campos.') 
+            }
+        }
+    </script>
+</body>
+</html>
