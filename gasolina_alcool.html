@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gasolina ou Álcool</title>
+</head>
+<body>
+    <!-- <label for="qtd">Quantidade:</label>
+    <input type="number" name="qtd" id="qtd"> -->
+
+    <label>Álcool:</label>
+    <input type="range" name="" id="A" value="50" min="0" max="100" value="50" step="1">
+    <span class="valorVolume">50</span><hr>
+
+    <label>Gasolina:</label>
+    <input type="range" name="" id="G" value="50" min="0" max="100" value="50" step="1">
+    <span class="valorVolume">50</span><hr>
+
+    <button type="button" id="calcular">Calcular</button><hr>
+    <div id="res"></div>
+
+    <script>
+        document.getElementById('calcular').addEventListener('click', calcular)
+
+        const alcool = document.getElementById('A')
+        const gasolina = document.getElementById('G')
+        const valorVolume = document.getElementsByClassName('valorVolume')[0]
+        const valorVolume1 = document.getElementsByClassName('valorVolume')[1]
+
+        alcool.addEventListener('input', () => {
+            const v = alcool.value
+            valorVolume.innerText = v
+        })
+
+        gasolina.addEventListener('input', () => {
+            const v1 = gasolina.value
+            valorVolume1.innerText = v1
+        })
+
+        function calcular() {
+            let a = parseInt(document.getElementById('A').value)
+            let g = parseInt(document.getElementById('G').value)
+            let res = document.getElementById('res')
+
+            if (a !== 0 || g !== 0) {
+                let precoAlcool = 1.9
+                let precoGasolina = 2.5
+
+                let combustivelAlcool = precoAlcool * a
+                let combustivelGasolina = precoGasolina * g
+
+                if (a <= 20 || g <= 20) {
+                    let alcoolDesc1 = 0.03 * combustivelAlcool
+                    let gasolinaDesc1 = 0.03 * combustivelGasolina
+                    res.textContent = `Você pagará: R$${(combustivelAlcool - alcoolDesc1).toFixed()} de álcool e R$${(combustivelGasolina - gasolinaDesc1).toFixed()} de gasolina.`
+                    //console.log((a*precoAlcool) * alcoolDesc1)
+                } else if(a > 20 || g > 20){
+                    let alcoolDesc2 = 0.05 * combustivelAlcool
+                    let gasolinaDesc2 = 0.06 * combustivelGasolina
+                    res.textContent = `Você pagará: R$${(combustivelAlcool - alcoolDesc2).toFixed()} de álcool e R$${(combustivelGasolina - gasolinaDesc2).toFixed()} de gasolina.`
+                }
+            } else {
+                alert('Deve ser maior que 0!')
+            }
+        }
+    </script>
+</body>
+</html>
