@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Culpado ou Inocente?</title>
+</head>
+<body>
+    <p>
+        <label for="t">Telefonou para a vítima?</label>
+        <select name="" id="t">
+            <option value="sim">Sim</option>
+            <option value="nao">Não</option>
+        </select><hr>
+
+        <label for="e">Esteve no local do crime?</label>
+        <select name="" id="e">
+            <option value="sim">Sim</option>
+            <option value="nao">Não</option>
+        </select><hr>
+
+        <label for="m">Mora perto da vítima?</label>
+        <select name="" id="m">
+            <option value="sim">Sim</option>
+            <option value="nao">Não</option>
+        </select><hr>
+
+        <label for="d">Devia para a vítima?</label>
+        <select name="" id="d">
+            <option value="sim">Sim</option>
+            <option value="nao">Não</option>
+        </select><hr>
+
+        <label for="j">Já trabalhou com a vítima?</label>
+        <select name="" id="j">
+            <option value="sim">Sim</option>
+            <option value="nao">Não</option>
+        </select><hr>
+    </p>
+    <button type="button" id="verificar">Verificar</button>
+
+
+    <script>
+        document.getElementById('verificar').addEventListener('click', verificar)
+        let caso = []
+
+        function verificar() {
+            //Variáveis
+            let telefonou= document.getElementById('t').value
+            let mora = document.getElementById('m').value
+            let esteve= document.getElementById('e').value
+            let devia = document.getElementById('d').value
+            let trabalhou = document.getElementById('j').value
+
+            //Adições ao vetor
+            caso.push(telefonou)
+            caso.push(mora)
+            caso.push(esteve)
+            caso.push(devia)
+            caso.push(trabalhou)
+
+            let elementoProcurado = 'nao'
+            let vezesRepetido = caso.filter(item => item === elementoProcurado).length
+
+            if (vezesRepetido === 2) {
+                alert('Suspeito!')
+            } else if(vezesRepetido === 3 || vezesRepetido === 4){
+                alert('Cúmplice!')
+            } else if(vezesRepetido === 5){
+                alert('Assassino!')
+            } else{
+                alert('Inocente!')
+            }
+
+            caso = []
+        
+        }
+
+    </script>
+</body>
+</html>
