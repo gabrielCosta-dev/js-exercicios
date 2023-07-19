@@ -21,24 +21,7 @@
     <div id="res"></div>
 
     <script>
-        document.getElementById('calcular').addEventListener('click', calcular)
-
-        const alcool = document.getElementById('A')
-        const gasolina = document.getElementById('G')
-        const valorVolume = document.getElementsByClassName('valorVolume')[0]
-        const valorVolume1 = document.getElementsByClassName('valorVolume')[1]
-
-        alcool.addEventListener('input', () => {
-            const v = alcool.value
-            valorVolume.innerText = v
-        })
-
-        gasolina.addEventListener('input', () => {
-            const v1 = gasolina.value
-            valorVolume1.innerText = v1
-        })
-
-        function calcular() {
+        document.getElementById('calcular').addEventListener('click', () => {
             let a = parseInt(document.getElementById('A').value)
             let g = parseInt(document.getElementById('G').value)
             let res = document.getElementById('res')
@@ -63,7 +46,22 @@
             } else {
                 alert('Deve ser maior que 0!')
             }
-        }
+        })
+
+        const alcool = document.getElementById('A')
+        const gasolina = document.getElementById('G')
+        const valorVolume = document.getElementsByClassName('valorVolume')[0]
+        const valorVolume1 = document.getElementsByClassName('valorVolume')[1]
+
+        alcool.addEventListener('input', () => {
+            const v = alcool.value
+            valorVolume.innerText = v
+        })
+
+        gasolina.addEventListener('input', () => {
+            const v1 = gasolina.value
+            valorVolume1.innerText = v1
+        })
     </script>
 </body>
 </html>
