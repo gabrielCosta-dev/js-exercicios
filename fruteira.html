@@ -12,11 +12,13 @@
     <label for="maca">Maçã:</label>
     <input type="number" name="maca" id="mac"><hr>
     <button type="button" id="calcular">Calcular</button>
+    <div id="resposta"></div>
 
     <script>
         document.getElementById('calcular').addEventListener('click', ()=>{
             let mor = document.getElementById('mor').value
             let mac = document.getElementById('mac').value
+            let res = document.getElementById('resposta')
             
             if (mor !== '' || mac !== '') {
                 //Convertendo para números
@@ -29,16 +31,41 @@
                 let maca5 = 1.8
                 let maca5mais = 1.5
 
-                //Cálculos
+                //Quantidade de frutas
                 let frutasCompradas = morango + maca
 
+                //Morangos
+                let valorMor5 = morango * morango5
+                let valorMor5mais = morango * morango5mais
 
-                if (frutasCompradas > 8 || valorCompras > 25) {
-                    let desconto = 0.1
+                //Maçãs
+                let valorMac5 = maca * maca5
+                let valorMac5mais = maca * maca5mais
+
+                //Total de compras
+                let valorComprasAlto = valorMac5mais + valorMor5mais
+                let valorComprasBaixo = valorMac5 + valorMor5
+
+                if (morango !== 0 || maca !== 0) {
+                    if (frutasCompradas > 8 || valorComprasAlto > 25) {
+                    let grandeCompraDesc = 0.1 * valorComprasAlto
+                    res.innerHTML = `
+                        Você comprou ${morango} morangos e ${maca} maçãs.<br>
+                        O valor total da compra foi: R$${valorComprasAlto.toFixed()}.<br>
+                        Você recebeu um desconto de (10%): R$${grandeCompraDesc.toFixed()}.<br>
+                        Você pagará: R$${(valorComprasAlto - grandeCompraDesc).toFixed()}.
+                    `
+                    } else {
+                        res.innerHTML = `
+                            Você comprou ${morango} morangos e ${maca} maçãs.<br>
+                            O valor total da compra foi: R$${valorComprasBaixo.toFixed()}.<br>
+                            Você pagará: R$${valorComprasBaixo.toFixed()}.
+                        `
+                    }
                 } else {
-                    
+                    alert('Compre alguma fruta!')
                 }
-                //console.log(morango, maca)
+                
             } else {
                 alert('Preencha um dos campos.')
             }
