@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fruteira</title>
+</head>
+<body>
+    <label for="morango">Morango:</label>
+    <input type="number" name="morango" id="mor"><hr>
+    
+    <label for="maca">Maçã:</label>
+    <input type="number" name="maca" id="mac"><hr>
+    <button type="button" id="calcular">Calcular</button>
+
+    <script>
+        document.getElementById('calcular').addEventListener('click', ()=>{
+            let mor = document.getElementById('mor').value
+            let mac = document.getElementById('mac').value
+            
+            if (mor !== '' || mac !== '') {
+                //Convertendo para números
+                let morango = Number(mor)
+                let maca = Number(mac)
+
+                //Valor por quilo
+                let morango5 = 2.5
+                let morango5mais = 2.2
+                let maca5 = 1.8
+                let maca5mais = 1.5
+
+                //Cálculos
+                let frutasCompradas = morango + maca
+
+
+                if (frutasCompradas > 8 || valorCompras > 25) {
+                    let desconto = 0.1
+                } else {
+                    
+                }
+                //console.log(morango, maca)
+            } else {
+                alert('Preencha um dos campos.')
+            }
+        })
+    </script>
+</body>
+</html>
