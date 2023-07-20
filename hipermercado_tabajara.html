@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hipermercado Tabajara</title>
+    <style>
+        th{
+            background-color: burlywood;
+        }
+
+        table{
+            border-collapse: collapse; margin-bottom: 10px;
+        }
+
+        th, td{
+            padding: 10px; border: 1px solid black;
+        }
+
+        tr:nth-child(odd){
+            background-color: wheat;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Promoção de carnes</h1>
+
+    <table>
+        <thead>
+            <th>Cortes</th>
+            <th>Até 5kg</th>
+            <th>Acima de 5kg</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Filé duplo</td>
+                <td>R$ 4,90 por kg</td>
+                <td>R$ 5,80 por kg</td>
+            </tr>
+            <tr>
+                <td>Alcatra</td>
+                <td>R$ 5,90 por kg</td>
+                <td>R$ 6,80 por kg</td>
+            </tr>
+            <tr>
+                <td>Picanha</td>
+                <td>R$ 6,90 por kg</td>
+                <td>R$ 7,80 por kg</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <label for="qtd">Quantidade:</label>
+    <input type="number" name="qtd" id="qtd">
+
+    <input type="radio" name="carnes" id="file" value="filé" checked>Filé duplo
+    <input type="radio" name="carnes" id="alcatra" value="alcatra">Alcatra
+    <input type="radio" name="carnes" id="picanha" value="picanha">Picanha <hr>
+
+    <label for="cartao">Cartão Tabajara:</label>
+    <select name="cartao" id="cartao">
+        <option value="sim">Sim</option>
+        <option value="nao">Não</option>
+    </select><hr>
+
+    <button type="button" id="calcular">Calcular</button>
+    <div id="resultado"></div>
+
+    <script>
+        document.getElementById('calcular').addEventListener('click', ()=>{
+            let quantidade = document.getElementById('qtd').value
+            let corteEscolhido = document.querySelector('input[name=carnes]:checked')
+            let cartaoTabajara = document.getElementById('cartao').value
+            let res = document.getElementById('resultado')
+
+            if (corteEscolhido && qtd !== '') {
+                //Iterando variaveis
+                let corte = corteEscolhido.value
+                let qtd = Number(quantidade)
+
+                //Declaradno valores
+                let cartao = 0.05
+                let file5 = 4.9
+                let file5mais = 5.8
+                let alcatra5 = 5.9
+                let alcatra5mais = 6.8
+                let picanha5 = 6.9
+                let picanha5mais = 7.8
+
+                if (qtd > 0) {
+                    if (cartaoTabajara === 'sim') {
+                    if (qtd <= 5) {
+                        if (corte === 'filé') {
+                        let compraFile5 = qtd * file5
+                        res.innerHTML = `
+                            Você comprou ${qtd} quilos de ${corte}.<br>
+                            O valor total da sua compra foi: R$${compraFile5.toFixed(2).replace('.',',')} e usou o cartão tabajara para pagar.<br>
+                            O seu desconto foi de: R$${(compraFile5*cartao).toFixed(2).replace('.',',')}.<br>
+                            O seu total a pagar é: R$${(compraFile5 - compraFile5 * cartao).toFixed(2).replace('.',',')}.
+                        `
+                        }
+
+                        if (corte === 'alcatra') {
+                            let compraAlcatra5 = qtd * alcatra5
+                            res.innerHTML = `
+                                Você comprou ${qtd} quilos de ${corte}.<br>
+                                O valor total da sua compra foi: R$${compraAlcatra5.toFixed(2).replace('.',',')} e usou o cartão tabajara para pagar.<br>
+                                O seu desconto foi de: R$${(compraAlcatra5*cartao).toFixed(2).replace('.',',')}.<br>
+                                O seu total a pagar é: R$${(compraAlcatra5 - compraAlcatra5 * cartao).toFixed(2).replace('.',',')}.
+                            `
+                        }
+
+                        if (corte === 'picanha') {
+                            let compraPicanha5 = qtd * picanha5
+                            res.innerHTML = `
+                                Você comprou ${qtd} quilos de ${corte}.<br>
+                                O valor total da sua compra foi: R$${compraPicanha5.toFixed(2).replace('.',',')} e usou o cartão tabajara para pagar.<br>
+                                O seu desconto foi de: R$${(compraPicanha5*cartao).toFixed(2).replace('.',',')}.<br>
+                                O seu total a pagar é: R$${(compraPicanha5 - compraPicanha5 * cartao).toFixed(2).replace('.',',')}.
+                            `
+                        }
+
+                    } else {
+                        if (corte === 'filé') {
+                            let compraFile5mais = qtd * file5mais
+                            res.innerHTML = `
+                                Você comprou ${qtd} quilos de ${corte}.<br>
+                                O valor total da sua compra foi: R$${compraFile5mais.toFixed(2).replace('.',',')} e usou o cartão tabajara para pagar.<br>
+                                O seu desconto foi de: R$${(compraFile5mais*cartao).toFixed(2).replace('.',',')}.<br>
+                                O seu total a pagar é: R$${(compraFile5mais - compraFile5mais * cartao).toFixed(2).replace('.',',')}.
+                            `
+                        }
+
+                        if (corte === 'alcatra') {
+                            let compraAlcatra5mais = qtd * alcatra5mais
+                            res.innerHTML = `
+                                Você comprou ${qtd} quilos de ${corte}.<br>
+                                O valor total da sua compra foi: R$${compraAlcatra5mais.toFixed(2).replace('.',',')} e usou o cartão tabajara para pagar.<br>
+                                O seu desconto foi de: R$${(compraAlcatra5mais*cartao).toFixed(2).replace('.',',')}.<br>
+                                O seu total a pagar é: R$${(compraAlcatra5mais - compraAlcatra5mais * cartao).toFixed(2).replace('.',',')}.
+                            `
+                        }
+
+                        if (corte === 'picanha') {
+                            let compraPicanha5mais = qtd * picanha5mais
+                            res.innerHTML = `
+                                Você comprou ${qtd} quilos de ${corte}.<br>
+                                O valor total da sua compra foi: R$${compraPicanha5mais.toFixed(2).replace('.',',')} e usou o cartão tabajara para pagar.<br>
+                                O seu desconto foi de: R$${(compraPicanha5mais*cartao).toFixed(2).replace('.',',')}.<br>
+                                O seu total a pagar é: R$${(compraPicanha5mais - compraPicanha5mais * cartao).toFixed(2).replace('.',',')}.
+                            `
+                        }
+                    }
+
+                } else {
+                   if (qtd <= 5) {
+                        if(corte === 'filé') {
+                        let compraFile5 = qtd * file5
+                        res.innerHTML = `
+                            Você comprou ${qtd} quilos de ${corte}.<br>
+                            O valor total da sua compra foi: R$${compraFile5.toFixed(2).replace('.',',')} e não usou o cartão tabajara para pagar.<br>
+                        `
+                        }
+
+                        if(corte === 'alcatra') {
+                        let compraAlcatra5 = qtd * alcatra5
+                        res.innerHTML = `
+                            Você comprou ${qtd} quilos de ${corte}.<br>
+                            O valor total da sua compra foi: R$${compraAlcatra5.toFixed(2).replace('.',',')} e não usou o cartão tabajara para pagar.<br>
+                        `
+                        }
+
+                        if(corte === 'picanha') {
+                        let compraPicanha5 = qtd * picanha5
+                        res.innerHTML = `
+                            Você comprou ${qtd} quilos de ${corte}.<br>
+                            O valor total da sua compra foi: R$${compraPicanha5.toFixed(2).replace('.',',')} e não usou o cartão tabajara para pagar.<br>
+                        `
+                        }
+                   } else {
+                        if(corte === 'filé') {
+                            let compraFile5mais = qtd * file5mais
+                            res.innerHTML = `
+                                Você comprou ${qtd} quilos de ${corte}.<br>
+                                O valor total da sua compra foi: R$${compraFile5mais.toFixed(2).replace('.',',')} e não usou o cartão tabajara para pagar.<br>
+                            `
+                        }
+
+                        if(corte === 'alcatra') {
+                        let compraAlcatra5mais = qtd * alcatra5mais
+                        res.innerHTML = `
+                            Você comprou ${qtd} quilos de ${corte}.<br>
+                            O valor total da sua compra foi: R$${compraAlcatra5mais.toFixed(2).replace('.',',')} e não usou o cartão tabajara para pagar.<br>
+                        `
+                        }
+
+                        if(corte === 'picanha') {
+                        let compraPicanha5mais = qtd * picanha5mais
+                        res.innerHTML = `
+                            Você comprou ${qtd} quilos de ${corte}.<br>
+                            O valor total da sua compra foi: R$${compraPicanha5mais.toFixed(2).replace('.',',')} e não usou o cartão tabajara para pagar.<br>
+                        `
+                        }
+                   }
+                }
+                } else {
+                    alert('Digite o quanto deseja comprar.')
+                }
+            } else {
+                alert('Escolha um corte e nos diga o quanto deseja do mesmo!')
+            }
+        })
+    </script>
+</body>
+</html>
