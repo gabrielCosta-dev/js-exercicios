@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercícios - Repetições</title>
+</head>
+<body>
+    <label for="nota">Nota:</label>
+    <input type="number" name="nota" id="nota" placeholder="Entre 0 e 10">
+    <button type="button" id="verificar">Verificar</button>
+
+    <script>
+        document.getElementById('verificar').addEventListener('click', ()=>{
+            let n = Number(document.querySelector('input#nota').value)
+            
+            while (n < 0 || n > 10) {
+                alert('Valor inválido!')
+                document.querySelector('input#nota').value = ''
+            }
+
+            alert('Valor válido.')
+        })
+    </script>
+</body>
+</html>
