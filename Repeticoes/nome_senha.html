@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercícios - Repetições</title>
+</head>
+<body>
+    <label for="nome">Nome:</label>
+    <input type="text" name="nome" id="nome">
+
+    <label for="senha">Senha:</label>
+    <input type="password" name="senha" id="senha">
+    <button type="submit" id="v">Verificar</button>
+
+    <p id="res"></p>
+
+    <script>
+        document.getElementById('v').addEventListener('click', ()=>{
+            let nome = document.querySelector('input#nome').value
+            let senha = document.querySelector('input#senha').value
+            let res = document.querySelector('p#res')
+
+            if (nome !== '' && senha !== '') {
+                nome = nome.toLowerCase()
+                senha = senha.toLowerCase()
+                console.log(nome, senha)
+
+                while (nome === senha) {
+                    res.textContent = 'Erro! Nome e senha não podem ser idênticos.'
+                    document.querySelector('input#nome').value = ''
+                    document.querySelector('input#senha').value = ''
+                    res.innerHTML = ''
+                }
+
+                alert('Tudo certo.')
+            } else {
+                alert('Preencha os campos corretamente.')
+            }
+        })
+    </script>
+</body>
+</html>
