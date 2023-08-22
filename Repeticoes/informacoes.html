@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercícios - Repetições</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <label for="nome">Nome:</label>
+    <input type="text" name="nome" id="nome" placeholder="Maior que 3 caracteres"><br>
+
+    <label for="idade">Idade:</label>
+    <input type="number" name="idade" id="idade" placeholder="Entre 0 e 150 anos"><br>
+
+    <label for="salario">Salário:</label>
+    <input type="number" name="salario" id="salario" placeholder="Maior que 0"><br>
+
+    <label for="sexo">Sexo:</label>
+    <select name="sexo" id="sexo">
+        <option value="m">Masculino</option>
+        <option value="f">Feminino</option>
+    </select>
+
+    <label for="civil">Estado civil:</label>
+    <select name="civil" id="civil">
+        <option value="s">Solteiro(a)</option>
+        <option value="c">Casado(a)</option>
+        <option value="v">Viúvo(a)</option>
+        <option value="d">Divorciado(a)</option>
+    </select> <br>
+
+    <button type="submit" id="verificar">Verificar</button><hr>
+    <div id="res"></div>
+
+    <script>
+        let verificar = document.getElementById('verificar')
+
+        verificar.addEventListener('click', ()=>{
+            //Caixa de resposta
+            let res = document.getElementById('res')
+
+            //Dados
+            let nome = document.getElementById('nome').value
+            let idade = document.getElementById('idade').value
+            let salario = document.getElementById('salario').value
+            let sexo = document.getElementById('sexo').value
+            let civil = document.getElementById('civil').value
+
+            console.log(sexo)
+            
+            while (true) {
+                if (nome !== '' && idade !== '' && salario !== '' && sexo !== null) {
+                    if (nome.length >= 3) {
+                        res.textContent = 'Nome válido.'
+                    } else {
+                        res.textContent = 'Nome inválido.'
+                    }
+                    
+                    if (idade >= 0 && idade <= 150) {
+                        res.textContent += 'Idade válida.'
+                    } else {
+                        res.textContent += 'Idade inválida.'
+                    }
+
+                    if (salario > 0) {
+                        res.textContent += 'Salário válido.'
+                    } else {
+                        res.textContent += 'Salário inválido.'
+                    }
+
+                    if (sexo == 'm') {
+                        res.textContent = 'Sexo Masculino.'
+                    } else {
+                        res.textContent = 'Sexo Feminino.'
+                    }
+
+                    if (civil == 's') {
+                        res.textContent = 'Solteiro(a).'
+                        break
+                    } else if(civil == 'c'){
+                        res.textContent = 'Casado(a).'
+                        break
+                    } else if(civil == 'v'){
+                        res.textContent = 'Viúvo(a).'
+                        break
+                    }else{
+                        res.textContent = 'Divorciado(a).'
+                        break
+                    }
+                } else {
+                    alert('Preencha os campos corretamente.')
+                    break
+                }
+            }
+        })
+    </script>
+</body>
+</html>
