@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercícios - Repetições</title>
+</head>
+<body>
+    <label for="paisA">País A:</label>
+    <input type="number" name="paisA" id="paisA">
+
+    <label for="paisB">País B:</label>
+    <input type="number" name="paisB" id="paisB">
+
+    <button type="submit" id="calcular">Calcular</button>
+    <div id="res"></div>
+
+    <script>
+        let calcular = document.getElementById('calcular')
+        calcular.addEventListener('click', ()=>{
+            let a = document.getElementById('paisA').value
+            let b = document.getElementById('paisB').value
+            let res = document.getElementById('res')
+
+            if (a !== '' && b !== '') {
+                a = Number(a)
+                b = Number(b)
+                let anos = 0
+
+                while (a < b) {
+                    let incrementoA = a * 0.03
+                    let incrementoB = b * 0.015
+
+                    a += incrementoA
+                    b += incrementoB
+
+                    anos++
+
+                    res.innerHTML = `Serão necessários ${anos} anos para o <strong>país A</strong> ultrapassar a população do <strong>país B</strong>.`
+                }
+            } else {
+                alert('Preencha todos os campos corretamente.')
+            }
+        })
+    </script>
+</body>
+</html>
