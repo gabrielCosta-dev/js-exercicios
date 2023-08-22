@@ -11,31 +11,35 @@
 
     <label for="senha">Senha:</label>
     <input type="password" name="senha" id="senha">
-    <button type="submit" id="v">Verificar</button>
+    <button type="button" id="v">Verificar</button>
 
     <p id="res"></p>
 
     <script>
-        document.getElementById('v').addEventListener('click', ()=>{
-            let nome = document.querySelector('input#nome').value
-            let senha = document.querySelector('input#senha').value
+        document.getElementById('v').addEventListener('click', () => {
             let res = document.querySelector('p#res')
 
-            if (nome !== '' && senha !== '') {
-                nome = nome.toLowerCase()
-                senha = senha.toLowerCase()
-                console.log(nome, senha)
+            while (true) {
+                let nome = document.querySelector('input#nome').value
+                let senha = document.querySelector('input#senha').value
 
-                while (nome === senha) {
-                    res.textContent = 'Erro! Nome e senha não podem ser idênticos.'
-                    document.querySelector('input#nome').value = ''
-                    document.querySelector('input#senha').value = ''
-                    res.innerHTML = ''
+                if (nome !== '' && senha !== '') {
+                    nome = nome.toLowerCase()
+                    senha = senha.toLowerCase()
+                    //console.log(nome, senha)
+
+                    if (nome === senha) {
+                        res.textContent = 'Erro! Nome e senha não podem ser idênticos.'
+                        document.querySelector('input#nome').value = ''
+                        document.querySelector('input#senha').value = ''
+                    } else {
+                        res.textContent = 'Tudo certo.'
+                        break; // Sair do loop se as informações forem válidas
+                    }
+                } else {
+                    alert('Preencha os campos corretamente.')
+                    break; // Sair do loop se os campos não estiverem preenchidos
                 }
-
-                alert('Tudo certo.')
-            } else {
-                alert('Preencha os campos corretamente.')
             }
         })
     </script>
