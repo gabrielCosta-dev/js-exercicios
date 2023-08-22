@@ -52,47 +52,47 @@
             let sexo = document.getElementById('sexo').value
             let civil = document.getElementById('civil').value
 
-            console.log(sexo)
+            //console.log(sexo)
             
             while (true) {
                 if (nome !== '' && idade !== '' && salario !== '' && sexo !== null) {
+                    res.textContent = ''
+
                     if (nome.length >= 3) {
-                        res.textContent = 'Nome válido.'
+                        res.textContent += 'Nome válido.\n'
                     } else {
-                        res.textContent = 'Nome inválido.'
+                        res.textContent += 'Nome inválido.\n'
                     }
                     
                     if (idade >= 0 && idade <= 150) {
-                        res.textContent += 'Idade válida.'
+                        res.textContent += 'Idade válida.\n'
                     } else {
-                        res.textContent += 'Idade inválida.'
+                        res.textContent += 'Idade inválida.\n'
                     }
 
                     if (salario > 0) {
-                        res.textContent += 'Salário válido.'
+                        res.textContent += 'Salário válido.\n'
                     } else {
-                        res.textContent += 'Salário inválido.'
+                        res.textContent += 'Salário inválido.\n'
                     }
 
                     if (sexo == 'm') {
-                        res.textContent = 'Sexo Masculino.'
+                        res.textContent += 'Sexo Masculino.\n'
                     } else {
-                        res.textContent = 'Sexo Feminino.'
+                        res.textContent += 'Sexo Feminino.\n'
                     }
 
                     if (civil == 's') {
-                        res.textContent = 'Solteiro(a).'
-                        break
+                        res.textContent += 'Solteiro(a).\n'
                     } else if(civil == 'c'){
-                        res.textContent = 'Casado(a).'
-                        break
+                        res.textContent += 'Casado(a).\n'
                     } else if(civil == 'v'){
-                        res.textContent = 'Viúvo(a).'
-                        break
+                        res.textContent += 'Viúvo(a).\n'
                     }else{
-                        res.textContent = 'Divorciado(a).'
-                        break
+                        res.textContent += 'Divorciado(a).\n'
                     }
+
+                    break
                 } else {
                     alert('Preencha os campos corretamente.')
                     break
