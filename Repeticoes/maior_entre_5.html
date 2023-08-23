@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercícios - Repetições</title>
+</head>
+<body>
+    <label for="num">Números:</label>
+    <input type="number" name="num" id="num">
+    <button type="button" id="add">Adicionar</button>
+    <div id="res"></div>
+
+    <script>
+        //Vetor
+        let lista_numeros = []
+
+        let add = document.getElementById('add')
+        add.addEventListener('click', ()=>{
+            //Dados
+            let num = document.getElementById('num').value
+            let res = document.getElementById('res') 
+            
+            if (num !== '') {
+                num = Number(num)
+                lista_numeros.push(num)
+                lista_numeros.sort((a,b)=>{return b-a})
+
+                if (lista_numeros.length <= 5) {
+                    res.innerHTML += `${num} foi adicionado.<br>`
+
+                    for (let i = 0; i > lista_numeros.length; i--) {
+                        res.innerHTML += `E o maior valor entre eles é ${lista_numeros[0]}.`
+                    }
+
+                    res.innerHTML += `E o maior valor entre eles é ${lista_numeros[0]}.`
+                } else {
+                    alert('Limite de valores atingido (5).')
+                }
+            } else {
+                alert('Adicione um número.')
+            }
+        })
+    </script>
+</body>
+</html>
