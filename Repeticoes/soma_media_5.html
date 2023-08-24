@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercícios - Repetições</title>
+</head>
+<body>
+    <label for="num">Números:</label>
+    <input type="number" name="num" id="num">
+    <button type="button" id="add">Adicionar</button>
+    <div id="res"></div>
+
+    <script>
+        //Vetor
+        let lista_numeros = []
+
+        let add = document.getElementById('add')
+        add.addEventListener('click', ()=>{
+            //Dados
+            let num = document.getElementById('num').value
+            let res = document.getElementById('res') 
+            
+            if (num !== '') {
+                num = Number(num)
+                lista_numeros.push(num)
+                //lista_numeros.sort((a,b)=>{return b-a})
+
+                if (lista_numeros.length <= 5) {
+                    console.log(lista_numeros)
+                    let soma = 0
+                    for (let i = 0; i < lista_numeros.length; i++) {
+                        soma += lista_numeros[i]
+                        //console.log(soma)
+                    }
+
+                    let media = soma/lista_numeros.length
+                    
+                    res.innerHTML = `O vetor é [${lista_numeros.join(', ')}].<br>`
+                    res.innerHTML += `A soma dos valores é ${soma}.<br>`
+                    res.innerHTML += `A média dos valores é ${media}.<br>`
+                } else {
+                    alert('Limite de valores atingido (5).')
+                }
+            } else {
+                alert('Adicione um número.')
+            }
+        })
+    </script>
+</body>
+</html>
