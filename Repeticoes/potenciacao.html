@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercícios - Repetições</title>
+</head>
+<body>
+    <label for="base">Base: </label>
+    <input type="number" name="base" id="base">
+
+    <label for="expoente">Expoente: </label>
+    <input type="number" name="expoente" id="expoente">
+
+    <button type="button" id="calcular">Calcular</button>
+    <div id="res"></div>
+
+    <script>
+        let calcular = document.getElementById('calcular')
+        calcular.addEventListener('click', ()=>{
+            let base = parseFloat(document.getElementById('base').value)
+            let expoente = parseInt(document.getElementById('expoente').value)
+            let res = document.getElementById('res')
+            
+            if (!isNaN(base) && !isNaN(expoente)) {
+                res.innerHTML = ''
+                let resultado = 1
+                for (let i = 0; i < expoente; i++) {
+                    resultado *= base
+                    
+                }
+
+                res.innerHTML = `O resultado de ${base} elevado a ${expoente} é: ${resultado}`
+            } else {
+                alert('Preencha os campos corretamente.')
+            }
+        })
+    </script>
+</body>
+</html>
