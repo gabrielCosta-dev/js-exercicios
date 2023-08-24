@@ -28,8 +28,9 @@
                 if (n1 < n2) {
                     while (n1 < n2) {
                         n1++
-                        res.innerHTML += `${n1}. <br>`
-                        //console.log(n1);
+                        n1+= n1
+                        res.innerHTML = `${n1}. <br>`
+                        console.log(n1);
                     }
                 } else {
                     while (n1 > n2) {
