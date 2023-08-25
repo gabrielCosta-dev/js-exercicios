@@ -25,15 +25,21 @@
             let resultado = 1
             
             if (num !== '') {
-                res.innerHTML = ''
-                num = Number(num)
+                if (num >= 1 && num <= 15) {
+                    res.innerHTML = ''
+                    num = Number(num)
 
-                for (let i = 1; i <= num; i++) {
-                    resultado *= i
+                    for (let i = 1; i <= num; i++) {
+                        resultado *= i
+                        
+                    }
                     
+                    res.innerHTML = `O ${num}! é: ${resultado}`
+                } else {
+                    alert('Valor inválido (1-15).')
                 }
-                
-                res.innerHTML = `O ${num}! é: ${resultado}`
+
+                document.getElementById('num').value = ''
             } else {
                 alert('Preencha os campos corretamente.')
             }
