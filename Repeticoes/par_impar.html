@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercícios - Repetições</title>
+</head>
+<body>
+    <label for="num">Adicionar número:</label>
+    <input type="number" name="num" id="num">
+
+    <button type="button" id="calcular">Calcular</button>
+    <div id="res"></div>
+
+    <script>
+        let lista_numeros = []
+
+        let calcular = document.getElementById('calcular')
+        calcular.addEventListener('click', ()=>{
+            let num = document.getElementById('num').value
+            let res = document.getElementById('res')
+            
+            if (num !== '') {
+                num = Number(num)
+                lista_numeros.push(num)
+                
+                res.innerHTML = `Os números adicionados são: [${lista_numeros.join(', ')}].<br>`
+                
+                let par = 0
+                let impar = 0
+
+                if (lista_numeros.length <= 10) {
+
+                    for (let i = 0; i < lista_numeros.length; i++) {
+
+                        if (lista_numeros[i]%2 == 0) {
+                            par++
+                        } else {
+                            impar++
+                        }
+                    
+                    }
+                    
+                } else {
+                    alert('Limite de valores atingido (10).')
+                }
+
+                res.innerHTML += `O número de pares é: ${par}.<br>`
+                res.innerHTML += `O número de ímpares é: ${impar}.<br>`
+            } else {
+                alert('Preencha os campos corretamente.')
+            }
+        })
+    </script>
+</body>
+</html>
