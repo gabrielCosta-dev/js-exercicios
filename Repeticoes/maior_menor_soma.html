@@ -21,22 +21,28 @@
             let res = document.querySelector('div#res')
             
             if (num !== '') {
-                res.innerHTML = ''
-
-                num = Number(num)
-                let soma = 0
-                lista_numeros.push(num)
-                lista_numeros.sort((a,b)=>{return a-b})
-
-                res.innerHTML += `Valores adicionados: [${lista_numeros.join(', ')}].<br>`
-                res.innerHTML += `Menor valor: ${lista_numeros[0]}.<br>`
-                res.innerHTML += `Maior valor: ${lista_numeros[lista_numeros.length - 1]}.<br>`
                 
-                for (let i = 0; i < lista_numeros.length; i++) {
-                    soma+=lista_numeros[i]
+                if (num >= 0 && num <= 1000) {
+                    res.innerHTML = ''
+
+                    num = Number(num)
+                    let soma = 0
+                    lista_numeros.push(num)
+                    lista_numeros.sort((a,b)=>{return a-b})
+
+                    res.innerHTML += `Valores adicionados: [${lista_numeros.join(', ')}].<br>`
+                    res.innerHTML += `Menor valor: ${lista_numeros[0]}.<br>`
+                    res.innerHTML += `Maior valor: ${lista_numeros[lista_numeros.length - 1]}.<br>`
+                    
+                    for (let i = 0; i < lista_numeros.length; i++) {
+                        soma+=lista_numeros[i]
+                    }
+
+                    res.innerHTML += `Soma dos valores: ${soma}.`
+                } else {
+                    alert('Valor inválido (0-1000).')
                 }
 
-                res.innerHTML += `Soma dos valores: ${soma}.`
             } else {
                 alert('Preencha os campos corretamente.')
             }
