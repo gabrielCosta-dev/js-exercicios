@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercícios - Repetições</title>
+</head>
+<body>
+    <label for="notas">Adicionar notas: </label>
+    <input type="number" name="notas" id="notas">
+
+    <button type="button" id="calcular">Calcular</button>
+    <div id="res"></div>
+
+    <script>
+        //Vetor
+        let lista_notas = []
+
+        //Evento
+        let calcular = document.getElementById('calcular')
+        calcular.addEventListener('click', ()=>{
+            let notas = document.getElementById('notas').value
+            let res = document.querySelector('div#res')
+
+            if (notas !== '') {
+                res.innerHTML = ''
+                notas = Number(notas)
+                lista_notas.push(notas)
+                let soma = 0
+
+                res.innerHTML += `Notas adicionadas: <strong>[${lista_notas.join(', ')}]</strong>.<br>`
+
+                for (let i = 0; i < lista_notas.length; i++) {
+                    soma += lista_notas[i]
+                }
+
+                res.innerHTML += `Média das notas: <strong>${soma/lista_notas.length}</strong>.`
+                document.getElementById('notas').value = ''
+            } else {
+                
+            }
+        })
+    </script>
+</body>
+</html>
