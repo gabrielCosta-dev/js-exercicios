@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercícios - Repetições</title>
+</head>
+<body>
+    <label for="num">Adicionar números: </label>
+    <input type="number" name="num" id="num">
+
+    <button type="button" id="calcular">Calcular</button>
+    <div id="res"></div>
+
+    <script>
+        let lista_numeros = []
+
+        let calcular = document.getElementById('calcular')
+        calcular.addEventListener('click', ()=>{
+            let num = document.getElementById('num').value
+            let res = document.querySelector('div#res')
+            
+            if (num !== '') {
+                res.innerHTML = ''
+
+                num = Number(num)
+                let soma = 0
+                lista_numeros.push(num)
+                lista_numeros.sort((a,b)=>{return a-b})
+
+                res.innerHTML += `Valores adicionados: [${lista_numeros.join(', ')}].<br>`
+                res.innerHTML += `Menor valor: ${lista_numeros[0]}.<br>`
+                res.innerHTML += `Maior valor: ${lista_numeros[lista_numeros.length - 1]}.<br>`
+                
+                for (let i = 0; i < lista_numeros.length; i++) {
+                    soma+=lista_numeros[i]
+                }
+
+                res.innerHTML += `Soma dos valores: ${soma}.`
+            } else {
+                alert('Preencha os campos corretamente.')
+            }
+        })
+    </script>
+</body>
+</html>
