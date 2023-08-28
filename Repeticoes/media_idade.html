@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercícios - Repetições</title>
+</head>
+<body>
+    <label for="idade">Idade: </label>
+    <input type="number" name="idade" id="idade">
+
+    <button type="button" id="verificar">Verificar</button>
+    <div id="res"></div>
+
+    <script>
+        let lista = []
+
+        let verificar = document.getElementById('verificar')
+        verificar.addEventListener('click', ()=>{
+            let idade = document.getElementById('idade').value
+            let res = document.getElementById('res')
+            let soma = 0
+
+            if (idade !== '') {
+                idade = parseInt(idade)
+                lista.push(idade)
+
+                if (idade >= 0) {
+
+                    for (let i = 0; i < lista.length; i++) {
+                        soma += lista[i];
+                        media = soma/lista.length
+                        media = parseInt(media); console.log(media);
+
+                        if (media >= 0 && media <= 25) {
+                                res.innerHTML = 'Turma Jovem.'
+                        } else if(media > 25 && media <= 60){
+                                res.innerHTML = 'Turma Adulta.'
+                        } else{
+                            res.innerHTML = 'Turma Idosa.'
+                        }
+                    }
+                } else {
+                    alert('Deve ser inteiro e positivo.')
+                }
+            } else {
+                alert('Preencha o campo corretamente.')
+            }
+        })
+    </script>
+</body>
+</html>
