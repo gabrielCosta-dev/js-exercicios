@@ -16,7 +16,30 @@
     <script>
         let verificar = document.getElementById('verificar')
         verificar.addEventListener('click', ()=>{
-            alert('Ok')
+            let num = document.getElementById('num').value
+            let res = document.getElementById('res')
+
+            if (num !== '') {
+                num = Number(num)
+                let divisores = []
+
+                for (let i = 1; i <= num; i++) {
+                    if (num % i == 0) {
+                        divisores.push(i)
+                    }
+
+                    if (divisores.length == 2) {
+                        res.innerHTML = `É primo.`
+                    } else{
+                        res.innerHTML += `Não é primo.`
+                        res.innerHTML = `É divísivel por: [${divisores.join(', ')}]. <br>`
+                    }
+                }
+
+                document.getElementById('num').value = ''
+            } else {
+                alert('Digite um número.')
+            }
         })
     </script>
 </body>
