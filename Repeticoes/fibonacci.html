@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercícios - Repetições</title>
+</head>
+<body>
+    <label for="num">Adicionar número: </label>
+    <input type="number" name="num" id="num">
+
+    <button type="button" id="calcular">Calcular</button>
+    <div id="res"></div>
+
+    <script>
+        let calcular = document.getElementById('calcular')
+        calcular.addEventListener('click', ()=>{
+            let termo = document.getElementById('num').value
+            let penultimo = 0; let ultimo = 1
+            let res = document.getElementById('res')
+            
+            if (num !== '') {
+                termo = Number(termo)
+
+                if (termo < 3) {
+                    res.innerHTML = `Fibonacci: ${termo - 1}.`
+                } else {
+                    for (let count = 3; count <= termo; count++) {
+
+                        numero = penultimo + ultimo
+                        penultimo = ultimo
+                        ultimo = numero
+
+                    }
+                }
+
+                res.innerHTML = `Fibonacci: ${numero}.`
+                document.getElementById('num').value = ''
+            } else {
+                alert('Preencha o campo corretamente.')
+            }
+        })
+    </script>
+</body>
+</html>
