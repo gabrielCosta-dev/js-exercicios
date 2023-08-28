@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercícios - Repetições</title>
+</head>
+<body>
+    <h1>Vote</h1>
+
+    <label for="eleitores">Total de eleitores:</label>
+    <input type="number" name="eleitores" id="eleitores"><hr>
+
+    <input type="radio" name="candidato" id="candidatoA" value="a">Candidato A
+
+    <input type="radio" name="candidato" id="candidatoB" value="b">Candidato B
+
+    <input type="radio" name="candidato" id="candidatoC" value="c">Candidato C <br>
+
+    <button type="button" id="votar">Votar</button>
+    <div id="res"></div>
+
+    <script>
+        let candidatoA = []; let candidatoB = []; let candidatoC = []
+
+        let votar = document.getElementById('votar')
+        votar.addEventListener('click', ()=>{
+            let eleitores = document.getElementById('eleitores').value
+            let candidato = document.querySelector('input[name=candidato]:checked')
+            if (eleitores !== '') {
+                if (candidato !== null) {
+                candidato = candidato.value
+
+                if (candidato == 'a') {
+                    candidatoA.push(candidato);
+                } else if(candidato == 'b'){
+                    candidatoB.push(candidato);
+                } else {
+                    candidatoC.push(candidato);
+                }
+
+                
+            } else {
+                alert('Escolha um candidato.')
+            }
+            } else {
+                alert('Adicione o número de eleitores')
+            }
+        })
+    </script>
+</body>
+</html>
