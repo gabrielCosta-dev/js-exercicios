@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercícios - Repetições</title>
+</head>
+<body>
+    <h3>Dividindo alunos por turma</h3>
+
+    <label for="turmas">Quantidade de turmas: </label>
+    <input type="number" name="turmas" id="turmas"><br>
+
+    <label for="alunos">Total de alunos:</label>
+    <input type="number" name="alunos" id="alunos"><br>
+
+    <button type="button" id="calcular">Calcular</button><hr>
+    <div id="res"></div>
+
+    <script>
+        let calcular = document.getElementById('calcular');
+        calcular.addEventListener('click', () => {
+            let qtdTurmas = document.getElementById('turmas').value;
+            let qtdAlunos = document.getElementById('alunos').value;
+            let res = document.getElementById('res');
+
+            if (qtdTurmas !== '' && qtdAlunos !== '') {
+                let turmas = parseInt(qtdTurmas);
+                let totalAlunos = parseInt(qtdAlunos);
+                let alunosPorTurma = Math.min(Math.floor(totalAlunos / turmas), 40);
+                let alunosRestantes = totalAlunos % turmas;
+
+                res.innerHTML = ''; // Limpa o resultado anterior
+
+                for (let i = 1; i <= turmas; i++) {
+                    let alunosNaTurma = alunosPorTurma;
+                    
+                    if (alunosRestantes > 0) {
+                        alunosNaTurma++;
+                        alunosRestantes--;
+                    }
+
+                    let arrayAlunos = [];
+                    for (let x = 1; x <= alunosNaTurma; x++) {
+                        arrayAlunos.push(`Aluno ${x} da turma ${i}`);
+                    }
+
+                    res.innerHTML += `<p><strong>Turma ${i}:</strong><br>${arrayAlunos.join(', ')}</p>`;
+                }
+
+                if (alunosRestantes > 0) {
+                    res.innerHTML += `<p><strong>Alunos restantes:</strong> ${alunosRestantes}</p>`;
+                }
+            } else {
+                alert('Preencha os campos corretamente.');
+            }
+        });
+    </script>
+</body>
+</html>
