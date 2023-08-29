@@ -39,7 +39,22 @@
                     candidatoC.push(candidato);
                 }
 
-                
+                for (let i = 0; i <= eleitores; i++) {
+                    let total_eleitores = candidatoA.length + candidatoB.length + candidatoC.length
+
+                    if (total_eleitores == eleitores) {
+                        break
+                    } else {
+                        res.innerHTML = `Não escolheram candidato: ${(total_eleitores - eleitores) * -1}.<br>`
+                    }
+                    
+                }
+
+                res.innerHTML += `Votantes Candidato A: ${candidatoA.length}.<br>`
+                res.innerHTML += `Votantes Candidato B: ${candidatoB.length}.<br>`
+                res.innerHTML += `Votantes Candidato C: ${candidatoC.length}.<br>`
+
+                //console.log(candidatoA, candidatoB, candidatoC);
             } else {
                 alert('Escolha um candidato.')
             }
