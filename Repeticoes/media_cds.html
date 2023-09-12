@@ -27,6 +27,8 @@
             let soma = 0
 
             if (cd !== '' &&  valor !== '') {
+                res.innerHTML = ''
+
                 valor = Number(valor)
 
                 colecaoCd.push(cd)
@@ -34,10 +36,10 @@
                 
                 for (let i = 0; i < valoresCd.length; i++) {
                     soma += valoresCd[i]
-                    console.log(soma);
                 }
 
-                res.innerHTML = `Sua coleção é composta por ${colecaoCd.length} CDs.<br> A média de valores é ${soma/colecaoCd.length}.`
+                res.innerHTML += `Você comprou o CD ${cd} por ${valor}.<br>`
+                res.innerHTML += `Sua coleção é composta por ${colecaoCd.length} CDs.<br> A média de valores é ${Math.round(soma/colecaoCd.length)}.`
 
                 document.getElementById('cd').value = ''
                 document.getElementById('valor').value = ''
