@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercícios - Repetições</title>
+</head>
+<body>
+    <label for="paisA">CD:</label>
+    <input type="text" name="cd" id="cd">
+
+    <label for="paisB">Valor pago:</label>
+    <input type="number" name="valor" id="valor">
+
+    <button type="submit" id="calcular">Calcular</button>
+    <div id="res"></div>
+
+    <script>
+        let colecaoCd = []
+        let valoresCd = []
+
+        let calcular = document.getElementById('calcular')
+        calcular.addEventListener('click', ()=>{
+            let cd = document.getElementById('cd').value
+            let valor = document.getElementById('valor').value
+            let res = document.getElementById('res')
+            let soma = 0
+
+            if (cd !== '' &&  valor !== '') {
+                valor = Number(valor)
+
+                colecaoCd.push(cd)
+                valoresCd.push(valor)
+                
+                for (let i = 0; i < valoresCd.length; i++) {
+                    soma += valoresCd[i]
+                    console.log(soma);
+                }
+
+                res.innerHTML = `Sua coleção é composta por ${colecaoCd.length} CDs.<br> A média de valores é ${soma/colecaoCd.length}.`
+
+                document.getElementById('cd').value = ''
+                document.getElementById('valor').value = ''
+            } else {
+                alert('Preencha os campos corretamente.')
+            }
+        })
+    </script>
+</body>
+</html>
