@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript - Repetições</title>
+</head>
+<body>
+    <label for="qtdPaes">Quantos pães você deseja comprar?</label>
+    <input type="number" id="qtdPaes">
+
+    <button type="button" id="verificar">Verificar</button>
+    <div id="res"></div>
+
+    <script>
+        let verificar = document.getElementById('verificar')
+
+        verificar.addEventListener('click', ()=>{
+            let qtdPaes = document.getElementById('qtdPaes').value
+            let preco = 0.18
+            let soma = 0
+            let res = document.getElementById('res')
+            
+            if (qtdPaes !== '') {
+                qtdPaes = Number(qtdPaes)
+                
+                if (qtdPaes <= 50) {
+
+                    for (let x = 0; x < qtdPaes; x++) {
+                        soma += preco
+                    }
+
+                    res.innerHTML = `Comprando ${qtdPaes} pães você pagará ${soma.toFixed(2)}.`
+
+                    document.getElementById('qtdPaes').value = ''
+                } else {
+                    alert('Limite de compras atingido (50).')
+                }
+            } else {
+              alert('Nos diga quantos itens deseja levar.') 
+            }
+        })
+    </script>
+</body>
+</html>
