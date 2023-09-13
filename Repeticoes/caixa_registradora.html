@@ -50,6 +50,9 @@
                 } else {
                     alert('Valor insuficiente para realizar o pagamento.')
                 }
+
+                document.getElementById('valor').value = ''
+                document.getElementById('pagamento').value = ''
             } else {
                 alert('Valor e pagamento não definidos ou não permitidos.')
             }
