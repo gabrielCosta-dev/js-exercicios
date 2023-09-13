@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript - Repetições</title>
+</head>
+<body>
+    <label for="valor">Quanto custou?</label>
+    <input type="number" name="valor" id="valor">
+
+    <label for="pagamento">Pagamento:</label>
+    <input type="number" name="pagamento" id="pagamento">
+
+    <button type="button" id="calcular">Calcular</button>
+    <div id="res"></div>
+
+    <script>
+        let valorProdutos = []
+
+        let calcular = document.getElementById('calcular')
+        calcular.addEventListener('click', ()=>{
+            let valor = document.getElementById('valor').value; let soma = 0; 
+            let pagamento = document.getElementById('pagamento').value
+            let res = document.getElementById('res')
+
+            if (valor !== '' && pagamento !== '' && valor > 0 && pagamento > 0) {
+                valor = Number(valor)
+                pagamento = Number(pagamento)
+                res.innerHTML = ''
+
+                valorProdutos.push(valor)
+                for (let i = 0; i < valorProdutos.length; i++) {
+                    soma += valorProdutos[i]
+
+                    res.innerHTML += `Produto ${i+1}: R$ ${(valorProdutos[i]).toFixed(2)}.<br>`
+
+                    if (valor === 0) {
+                        soma *= 0
+                        break
+                    }
+                }
+                let troco = pagamento - soma
+
+                res.innerHTML += `Total: R$ ${soma.toFixed(2)}.<br>`
+                res.innerHTML += `Pagamento: R$ ${pagamento.toFixed(2)}.<br>`
+                
+                if (troco >= 0) {
+                    res.innerHTML += `Troco: R$ ${troco.toFixed(2)}.<br>`
+                } else {
+                    alert('Valor insuficiente para realizar o pagamento.')
+                }
+            } else {
+                alert('Valor e pagamento não definidos ou não permitidos.')
+            }
+        })
+    </script>
+</body>
+</html>
