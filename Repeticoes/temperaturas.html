@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript - Repetições</title>
+</head>
+<body>
+    <label for="temperatura">Adicionar temperatura:</label>
+    <input type="number" name="temperatura" id="temperatura">
+
+    <button type="button" id="verificar">Verificar</button>
+    <div id="res"></div>
+
+    <script>
+        let conjuntoTemperatura = []
+
+        let verificar = document.getElementById('verificar')
+        verificar.addEventListener('click', ()=>{
+            let temperatura = document.getElementById('temperatura').value; let soma = 0
+            let res = document.getElementById('res')
+
+            if (temperatura !== '') {
+                //Limpa a div res
+                res.innerHTML = ''
+
+                //Modificações na array
+                temperatura = parseInt(temperatura)
+                conjuntoTemperatura.push(temperatura)
+                conjuntoTemperatura.sort((a,b)=>{return a-b})
+
+                //Soma dos valores
+                for (let i = 0; i < conjuntoTemperatura.length; i++) {
+                    soma += conjuntoTemperatura[i]
+                }
+
+                //Média
+                let média = soma / conjuntoTemperatura.length
+
+                //Impressão na página
+                res.innerHTML += `O <strong>menor</strong> valor foi ${conjuntoTemperatura[0]}°C.<br>`
+                res.innerHTML += `O <strong>maior</strong> valor foi ${conjuntoTemperatura[conjuntoTemperatura.length-1]}°C.<br>`
+                res.innerHTML += `A <strong>média</strong> de temperaturas no período foi ${parseInt(média)}°C.`
+            } else {
+                alert('Preencha o campo corretamente.')
+            }
+        })
+    </script>
+</body>
+</html>
