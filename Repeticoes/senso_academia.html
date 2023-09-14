@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript - Repetições</title>
+</head>
+<body>
+    <label for="codigo">Código:</label>
+    <input type="number" name="codigo" id="codigo">
+
+    <label for="peso">Peso:</label>
+    <input type="number" name="peso" id="peso">
+
+    <label for="altura">Altura:</label>
+    <input type="number" name="altura" id="altura" placeholder="Em centímetros">
+
+    <div id="res"></div>
+
+    <script>
+        let listaCodigo = []
+        let listaPeso = []
+        let listaAltura = []
+
+        let imprint = document.getElementById('codigo')
+
+        imprint.addEventListener('keyup', ()=>{
+            let codigo = document.getElementById('codigo').value
+            let peso = document.getElementById('peso').value
+            let altura = document.getElementById('altura').value
+            let res = document.querySelector('div#res')
+            let somaPeso = 0; let somaAltura = 0
+            
+            if (codigo !== '' && peso !== '' && altura !== '') {
+                res.innerHTML = ''
+
+                codigo = Number(codigo)
+                peso = Number(peso)
+                altura = Number(altura)
+
+                listaPeso.push(peso)
+                listaPeso.sort((a,b)=>{return a-b})
+
+                listaAltura.push(altura)
+                listaAltura.sort((a,b)=>{return a-b})
+                
+                for (let v = 0; v < listaPeso.length; v++) {
+                    somaPeso += listaPeso[v]
+                    somaAltura += listaAltura[v]
+                }
+
+                let mediaPeso = somaPeso/listaPeso.length
+                let mediaAltura = somaAltura/listaAltura.length
+
+                if (codigo === 0) {
+                   res.innerHTML = `O cliente mais alto é` 
+                }
+            } else {
+                alert('Preencha todos os campos!')
+            }
+        })
+    </script>
+</body>
+</html>
