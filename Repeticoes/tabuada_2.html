@@ -26,27 +26,31 @@
             let numFinal = document.getElementById('numFinal').value
             let res = document.getElementById('res'); //console.log(numInicio, numFinal);
             
-            if (num !== '') {
+            if (num !== '' && numInicio !== '' && numFinal !== '') {
                 res.innerHTML = ''
 
                 num = Number(num)
                 numInicio = Number(numInicio)
                 numFinal = Number(numFinal)
 
-                for (let x = numInicio; x <= numFinal; x++) {
+                if (numInicio <= numFinal) {
+                    for (let x = numInicio; x <= numFinal; x++) {
                     
                     res.innerHTML += `${num} x ${x} = ${num * x}.<br>`
                     
+                    }
+
+                    document.getElementById('num').value = ''
+                    document.getElementById('numInicio').value = ''
+                    document.getElementById('numFinal').value = ''
+
+                    /* while (x < 10) {
+                        x++
+                        res.innerHTML += `${num} x ${x} = ${num * x}.<br>`
+                    } */
+                } else {
+                    alert('O início deve ser menor que o final!')
                 }
-
-                document.getElementById('num').value = ''
-                document.getElementById('numInicio').value = ''
-                document.getElementById('numFinal').value = ''
-
-                /* while (x < 10) {
-                    x++
-                    res.innerHTML += `${num} x ${x} = ${num * x}.<br>`
-                } */
 
             } else {
                 alert('Preencha os campos corretamente.')
