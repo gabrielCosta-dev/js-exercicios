@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript - Repetições</title>
+</head>
+<body>
+    <label for="codigo">Código:</label>
+    <input type="number" name="codigo" id="codigo">
+
+    <label for="peso">Peso:</label>
+    <input type="number" name="peso" id="peso">
+
+    <label for="altura">Altura:</label>
+    <input type="number" name="altura" id="altura" placeholder="Em centímetros">
+
+    <button type="button" id="verificar">Verificar</button>
+    <div id="res"></div>
+
+    <script>
+        let listaMembros = []
+
+        let verificar = document.getElementById('verificar')
+
+        verificar.addEventListener('click', ()=>{
+            let codigo = document.getElementById('codigo').value
+            let peso = document.getElementById('peso').value
+            let altura = document.getElementById('altura').value
+            let res = document.querySelector('div#res')
+            let somaPeso = 0; let somaAltura = 0
+            
+            if (codigo !== '' && peso !== '' && altura !== '') {
+                res.innerHTML = ''
+
+                codigo = Number(codigo)
+                peso = Number(peso)
+                altura = Number(altura)
+
+                class Membro{
+                    constructor(codigo, peso, altura){
+                        this.codigo = codigo
+                        this.peso = peso
+                        this.altura = altura
+                    }
+                }
+
+                let membro = new Membro(codigo, peso, altura)
+                listaMembros.push(membro)
+                listaMembros.sort((a,b)=> a-b)
+
+                //console.log(listaMembros);
+
+                document.getElementById('codigo').value = ''
+                document.getElementById('peso').value = ''
+                document.getElementById('altura').value = ''
+
+                let x = listaMembros[listaMembros.length-1]; console.log(x);
+
+                //res.innerHTML = `O membro de código ${x}`
+            } else {
+                alert('Preencha todos os campos!')
+            }
+        })
+    </script>
+</body>
+</html>
