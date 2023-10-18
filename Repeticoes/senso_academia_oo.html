@@ -47,7 +47,7 @@
 
                 let membro = new Membro(codigo, peso, altura)
                 listaMembros.push(membro)
-                listaMembros.sort((a,b)=> a-b)
+                listaMembros.sort((a,b)=>{return a-b})
 
                 //console.log(listaMembros);
 
@@ -55,7 +55,10 @@
                 document.getElementById('peso').value = ''
                 document.getElementById('altura').value = ''
 
-                let x = listaMembros[listaMembros.length-1]; console.log(x);
+                for (let i = 0; i < listaMembros.length; i++) {
+                    console.log(listaMembros[i]);
+                    
+                }
 
                 //res.innerHTML = `O membro de código ${x}`
             } else {
